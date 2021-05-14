@@ -28,15 +28,25 @@ const NewExpenseForm = ({ onSaveExpenseData }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    // make the object into an array
+    const inputArr = Object.values(userInput).some((values) => values === "");
+    console.log(inputArr);
+    // check if the array length is greater than 3
 
-    const expenseData = userInput;
+    if (inputArr) {
+      alert("Complete the input field before adding an expense");
+      return;
+    } else {
+      const expenseData = userInput;
 
-    onSaveExpenseData(expenseData);
-    setUserInput({
-      title: "",
-      amount: "",
-      date: "",
-    });
+      onSaveExpenseData(expenseData);
+      setUserInput({
+        title: "",
+        amount: "",
+        date: "",
+      });
+    }
+    // else continue
   };
 
   return (

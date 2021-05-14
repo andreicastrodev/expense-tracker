@@ -6,14 +6,13 @@ import ExpenseChart from "../ExpenseChart/Expense-chart.component";
 import "./expenses.styles.scss";
 
 const Expenses = ({ items }) => {
-  const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredYear, setFilteredYear] = useState("2021");
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
   const filteredExpenses = items.filter((expense) => {
-    console.log(expense);
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
